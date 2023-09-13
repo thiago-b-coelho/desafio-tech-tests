@@ -2,7 +2,7 @@ import { knexServiceMock } from "../__mocks__/knexService.mock";
 import { Aluno } from "../aluno.model";
 
 
-describe('Aluno model Suite', () => {
+describe('UNIT - Aluno model Suite', () => {
     it('Should be able to GET students', async () => {
         const aluno = new Aluno(knexServiceMock);
         const response = await aluno.getAll();

@@ -5,7 +5,9 @@
   "main": "./src/server.ts",
   "scripts": {
     "start": "tsnd --respawn ./src/server.ts",
-    "test": "jest"
+    "test": "jest",
+    "test:unit": "jest -t 'UNIT - '",
+    "test:int": "jest -t 'INT - '"
   },
   "dependencies": {
     "express": "^4.18.2",

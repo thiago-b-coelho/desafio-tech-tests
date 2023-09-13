@@ -9,8 +9,13 @@ router.get('/', async (_, res: Response) => {
 });
 
 router.post('/', async (req: Request, res: Response) => {
+  if(!req.body.nome || !req.body.cpf){
+    return res.status(400).json({
+      message: "Nome e CPF são obrigatórios"
+    })
+  }
   const data = await alunoFactory.store(req.body);
-  return res.status(200).json({ data });
+  return res.status(201).json({ data });
 });
 
 export default router;
