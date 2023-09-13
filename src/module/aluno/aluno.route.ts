@@ -1,15 +1,15 @@
 import express, { Request, Response } from 'express';
-import alunoController from './aluno.controller';
+import alunoFactory from './aluno.factory';
 
 const router = express.Router();
 
 router.get('/', async (_, res: Response) => {
-  const data = await alunoController.getAll();
+  const data = await alunoFactory.getAll();
   return res.status(200).json({ data });
 });
 
 router.post('/', async (req: Request, res: Response) => {
-  const data = await alunoController.store(req.body);
+  const data = await alunoFactory.store(req.body);
   return res.status(200).json({ data });
 });
 
