@@ -1,10 +1,19 @@
-import knex from '../../service/knex';
-import { Aluno, AlunoParams } from './aluno.d';
+import { KnexService } from '../../service/knex';
+import { Knex } from 'knex';
+import { AlunoT, AlunoParams } from './aluno.d';
 
-export const getAll = async (): Promise<Aluno[] | []> => {
-  return knex('aluno').select();
-};
+export class Aluno {
+  private db: Knex
 
-export const store = async (params: AlunoParams) => {
-  return knex('aluno').insert(params);
-};
+  constructor(knexService: KnexService){
+    this.db = knexService.obterConexao()
+  }
+
+  getAll = async (): Promise<AlunoT[] | []> => {
+    return this.db('aluno').select();
+  }
+
+  store = async (params: AlunoParams) => {
+    return this.db('aluno').insert(params)
+  }
+}

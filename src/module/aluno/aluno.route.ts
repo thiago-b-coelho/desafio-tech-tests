@@ -1,15 +1,15 @@
 import express, { Request, Response } from 'express';
-import * as alunoModel from './aluno.model';
+import alunoController from './aluno.controller';
 
 const router = express.Router();
 
 router.get('/', async (_, res: Response) => {
-  const data = await alunoModel.getAll();
+  const data = await alunoController.getAll();
   return res.status(200).json({ data });
 });
 
 router.post('/', async (req: Request, res: Response) => {
-  const data = await alunoModel.store(req.body);
+  const data = await alunoController.store(req.body);
   return res.status(200).json({ data });
 });
 

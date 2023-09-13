@@ -11,17 +11,3 @@ export class KnexService {
     return KnexService.conn;
   }
 }
-
-
-// let conn: any;
-
-// function conectar() {
-//   if (conn) {
-//     return conn;
-//   }
-
-//   conn = knex(knexConfig);
-//   return conn;
-// }
-
-// export default conectar();

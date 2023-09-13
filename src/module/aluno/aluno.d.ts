@@ -1,4 +1,4 @@
-export interface Aluno {
+export interface AlunoT {
     id: number
     nome: string
     cpf: number
