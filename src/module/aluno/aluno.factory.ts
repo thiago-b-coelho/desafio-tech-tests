@@ -1,4 +1,4 @@
 import { Aluno } from "./aluno.model";
-import { KnexService} from "../../service/knex";
+import { KnexService } from "../../service/knex";
 
-export default new Aluno (new KnexService);
+export default new Aluno(new KnexService());

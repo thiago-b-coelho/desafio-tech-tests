@@ -1,10 +1,12 @@
 export interface AlunoT {
-    id: number
-    nome: string
-    cpf: number
+    id: number;
+    nome: string;
+    cpf: string;
+    idade: number;
 }
 
 export interface AlunoParams {
-    nome: string
-    cpf: number
+    nome: string;
+    cpf: string;
+    idade: number;
 }
