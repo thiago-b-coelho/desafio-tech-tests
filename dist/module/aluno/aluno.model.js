@@ -35,21 +35,33 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.store = exports.getAll = void 0;
-var knex_1 = __importDefault(require("../../service/knex"));
-var getAll = function () { return __awaiter(void 0, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-        return [2 /*return*/, (0, knex_1.default)('aluno').select()];
-    });
-}); };
-exports.getAll = getAll;
-var store = function (params) { return __awaiter(void 0, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-        return [2 /*return*/, (0, knex_1.default)('aluno').insert(params)];
-    });
-}); };
-exports.store = store;
+exports.Aluno = void 0;
+var Aluno = /** @class */ (function () {
+    function Aluno(knexService) {
+        var _this = this;
+        this.getAll = function () { return __awaiter(_this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, this.db("aluno").select()];
+            });
+        }); };
+        this.store = function (params) { return __awaiter(_this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                if (params.nome.length < 2)
+                    throw new Error("Nome deve conter no mínimo 2 letras");
+                else if (!/^[a-zA-Z]*$/.test(params.nome))
+                    throw new Error("Nome não deve conter números ou símbolos");
+                if (params.cpf.length !== 11)
+                    throw new Error("CPF deve ter 11 digitos");
+                else if (!/^[0-9]*$/.test(params.cpf))
+                    throw new Error("CPF deve conter apenas números");
+                if (params.idade < 3)
+                    throw new Error("Aluno deve ter no mínimo 3 anos de idade");
+                return [2 /*return*/, this.db("aluno").insert(params)];
+            });
+        }); };
+        this.db = knexService.obterConexao();
+    }
+    return Aluno;
+}());
+exports.Aluno = Aluno;

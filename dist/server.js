@@ -7,7 +7,7 @@ var express_1 = __importDefault(require("express"));
 var aluno_route_1 = __importDefault(require("./module/aluno/aluno.route"));
 var app = (0, express_1.default)();
 app.use(express_1.default.json());
-app.use('/aluno', aluno_route_1.default);
-app.listen(8080, function () {
-    console.log('server running!');
+app.use("/aluno", aluno_route_1.default);
+app.listen(3000, function () {
+    console.log("Server running!");
 });
